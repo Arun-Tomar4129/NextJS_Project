@@ -8,7 +8,6 @@ import {
   Linkedin,
   Twitter,
   Youtube,
-  MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -85,7 +84,7 @@ const Page = () => {
   />
 </Link>
    <div>
-    
+
    </div>
     </div>
   );
