@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
@@ -36,7 +36,8 @@ const indianStates = [
   "west bengal",
 ];
 
-const Page = () => {
+// Component that uses useSearchParams
+const ApplyForm = () => {
   const searchParams = useSearchParams();
   const [course, setCourse] = useState("");
 
@@ -88,6 +89,7 @@ const Page = () => {
           placeholder="Enter Address"
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
+
         <select
           name="state"
           id="state"
@@ -105,7 +107,7 @@ const Page = () => {
           type="text"
           value={course}
           readOnly
-          className="w-full px-4 py-2 border  font-extrabold rounded bg-gray-100 text-gray-600 cursor-not-allowed"
+          className="w-full px-4 py-2 border font-extrabold rounded bg-gray-100 text-gray-600 cursor-not-allowed"
         />
 
         <Button className="w-full" variant={"outline"} size={"sm"}>
@@ -113,6 +115,14 @@ const Page = () => {
         </Button>
       </form>
     </motion.div>
+  );
+};
+
+const Page = () => {
+  return (
+    <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
+      <ApplyForm />
+    </Suspense>
   );
 };
 
