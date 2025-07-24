@@ -1,42 +1,18 @@
 "use client";
 
 import React, { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useSearchParams } from "next/navigation";
 
 const indianStates = [
-  "andhra pradesh",
-  "arunachal pradesh",
-  "assam",
-  "bihar",
-  "chhattisgarh",
-  "goa",
-  "gujarat",
-  "haryana",
-  "himachal pradesh",
-  "jharkhand",
-  "karnataka",
-  "kerala",
-  "madhya pradesh",
-  "maharashtra",
-  "manipur",
-  "meghalaya",
-  "mizoram",
-  "nagaland",
-  "odisha",
-  "punjab",
-  "rajasthan",
-  "sikkim",
-  "tamil nadu",
-  "telangana",
-  "tripura",
-  "uttar pradesh",
-  "uttarakhand",
-  "west bengal",
+  "andhra pradesh", "arunachal pradesh", "assam", "bihar", "chhattisgarh",
+  "goa", "gujarat", "haryana", "himachal pradesh", "jharkhand", "karnataka",
+  "kerala", "madhya pradesh", "maharashtra", "manipur", "meghalaya", "mizoram",
+  "nagaland", "odisha", "punjab", "rajasthan", "sikkim", "tamil nadu",
+  "telangana", "tripura", "uttar pradesh", "uttarakhand", "west bengal"
 ];
 
-// Component that uses useSearchParams
 const ApplyForm = () => {
   const searchParams = useSearchParams();
   const [course, setCourse] = useState("");
@@ -65,25 +41,21 @@ const ApplyForm = () => {
           placeholder="Enter Name"
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
-
         <input
           type="email"
           placeholder="Enter Email"
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
-
         <input
           type="number"
           placeholder="Enter Phone Number"
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
-
         <input
           type="number"
           placeholder="Enter WhatsApp Number"
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
-
         <input
           type="text"
           placeholder="Enter Address"
@@ -95,7 +67,7 @@ const ApplyForm = () => {
           id="state"
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
-          <option value="">select a state</option>
+          <option value="">Select a state</option>
           {indianStates.map((state) => (
             <option key={state} value={state}>
               {state}
@@ -110,7 +82,7 @@ const ApplyForm = () => {
           className="w-full px-4 py-2 border font-extrabold rounded bg-gray-100 text-gray-600 cursor-not-allowed"
         />
 
-        <Button className="w-full" variant={"outline"} size={"sm"}>
+        <Button className="w-full" variant="outline" size="sm">
           Submit
         </Button>
       </form>
@@ -118,12 +90,10 @@ const ApplyForm = () => {
   );
 };
 
-const Page = () => {
+export default function Page() {
   return (
     <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
       <ApplyForm />
     </Suspense>
   );
-};
-
-export default Page;
+}
