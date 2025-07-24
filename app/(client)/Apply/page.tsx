@@ -1,3 +1,4 @@
+// app/apply/page.tsx
 "use client";
 
 import React, { useState, useEffect, Suspense } from "react";
@@ -5,14 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-const indianStates = [
-  "andhra pradesh", "arunachal pradesh", "assam", "bihar", "chhattisgarh",
-  "goa", "gujarat", "haryana", "himachal pradesh", "jharkhand", "karnataka",
-  "kerala", "madhya pradesh", "maharashtra", "manipur", "meghalaya", "mizoram",
-  "nagaland", "odisha", "punjab", "rajasthan", "sikkim", "tamil nadu",
-  "telangana", "tripura", "uttar pradesh", "uttarakhand", "west bengal"
-];
-
+// ✅ Always use PascalCase for component names in Next.js
 const ApplyForm = () => {
   const searchParams = useSearchParams();
   const [course, setCourse] = useState("");
@@ -23,6 +17,14 @@ const ApplyForm = () => {
       setCourse(selectedCourse);
     }
   }, [searchParams]);
+
+  const indianStates = [
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+    "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
+    "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram",
+    "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
+    "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"
+  ];
 
   return (
     <motion.div
@@ -39,20 +41,23 @@ const ApplyForm = () => {
         <input
           type="text"
           placeholder="Enter Name"
+          required
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         <input
           type="email"
           placeholder="Enter Email"
+          required
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         <input
-          type="number"
+          type="tel"
           placeholder="Enter Phone Number"
+          required
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         <input
-          type="number"
+          type="tel"
           placeholder="Enter WhatsApp Number"
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
@@ -65,6 +70,7 @@ const ApplyForm = () => {
         <select
           name="state"
           id="state"
+          required
           className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           <option value="">Select a state</option>
@@ -82,7 +88,7 @@ const ApplyForm = () => {
           className="w-full px-4 py-2 border font-extrabold rounded bg-gray-100 text-gray-600 cursor-not-allowed"
         />
 
-        <Button className="w-full" variant="outline" size="sm">
+        <Button className="w-full" variant="outline" size="sm" type="submit">
           Submit
         </Button>
       </form>

@@ -1,15 +1,16 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 import {
   Facebook,
   Instagram,
   Linkedin,
   Twitter,
   Youtube,
-} from "lucide-react";
-import Link from "next/link";
+} from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image'; // ✅ Import Image from next/image
 
 const Page = () => {
   return (
@@ -21,12 +22,13 @@ const Page = () => {
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="lg:w-[60%] w-full h-[500px]"
+          className="lg:w-[60%] w-full h-[500px] relative"
         >
-          <img
-            src="Image1.jpeg"
-            alt="university1"
-            className="rounded-lg w-full h-full object-cover"
+          <Image
+            src="/Image1.jpeg"
+            alt="University View"
+            fill
+            className="rounded-lg object-cover"
           />
         </motion.div>
 
@@ -37,11 +39,12 @@ const Page = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="lg:w-[40%] w-full flex flex-col gap-4"
         >
-          <div className="w-full border-2 rounded-lg overflow-hidden">
-            <img
-              src="Image2.jpeg"
-              alt="Another view"
-              className="w-full h-[250px] object-cover"
+          <div className="w-full border-2 rounded-lg overflow-hidden relative h-[250px]">
+            <Image
+              src="/Image2.jpeg"
+              alt="Another View"
+              fill
+              className="object-cover"
             />
           </div>
           <div className="bg-white p-4 rounded-lg shadow-md">
@@ -73,19 +76,18 @@ const Page = () => {
 
       {/* Fixed WhatsApp Icon */}
       <Link
-  href="https://wa.me/919999999999"
-  target="_blank"
-  className="fixed bottom-4 right-4 bg-green-500 p-3 rounded-full shadow-lg z-50 hover:scale-105 transition-transform size-[70px] flex items-center justify-center animate-bounce"
->
-  <img
-    src="WhatApp.jpg"
-    alt="WhatsApp Icon"
-    className="w-full h-full rounded-full object-cover"
-  />
-</Link>
-   <div>
-
-   </div>
+        href="https://wa.me/919999999999"
+        target="_blank"
+        className="fixed bottom-4 right-4 bg-green-500 p-3 rounded-full shadow-lg z-50 hover:scale-105 transition-transform size-[70px] flex items-center justify-center animate-bounce"
+      >
+        <Image
+          src="/WhatApp.jpg"
+          alt="WhatsApp Icon"
+          width={70}
+          height={70}
+          className="rounded-full object-cover"
+        />
+      </Link>
     </div>
   );
 };
